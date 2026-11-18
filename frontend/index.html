@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Lost & Found | AI-Based Object Matching</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🔍</span>
+        <span class="logo-text">Campus<span class="highlight">Find</span></span>
+        <span class="badge ai-tag">AI Powered</span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="report-lost.html" class="nav-link" id="navReportLost">Report Lost</a>
+        <a href="report-found.html" class="nav-link" id="navReportFound">Report Found</a>
+        <a href="#items-section" class="nav-link">Browse Items</a>
+        <a href="admin.html" class="nav-link" id="navAdmin">Staff Portal</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Welcome / Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="hero-pill">🎓 College Campus Lost & Found System</span>
+          <h1 class="hero-title">
+            AI-Based Lost Object <span class="gradient-text">Matching System</span>
+          </h1>
+          <p class="hero-subtitle">
+            Lost something on campus or found an item that belongs to someone else? 
+            Our intelligent matching algorithm automatically connects lost reports with found items based on descriptions, categories, and photos.
+          </p>
+
+          <div class="hero-actions">
+            <a href="report-lost.html" class="btn btn-lost" id="heroReportLostBtn">
+              <span class="btn-icon">📢</span> Report Lost Item
+            </a>
+            <a href="report-found.html" class="btn btn-found" id="heroReportFoundBtn">
+              <span class="btn-icon">🎁</span> Report Found Item
+            </a>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <span class="highlight-number">⚡ Fast</span>
+              <span class="highlight-label">Automated Similarity Matching</span>
+            </div>
+            <div class="highlight-divider"></div>
+            <div class="highlight-item">
+              <span class="highlight-number">🔒 Safe</span>
+              <span class="highlight-label">Verified Campus Community</span>
+            </div>
+            <div class="highlight-divider"></div>
+            <div class="highlight-item">
+              <span class="highlight-number">📍 Localized</span>
+              <span class="highlight-label">Tracked by Campus Buildings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="search-section" id="items-section">
+      <div class="search-container">
+        <div class="search-box">
+          <span class="search-icon">🔎</span>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search by item name, category (e.g., ID Card, Laptop, Bottle), or location..." 
+            autocomplete="off"
+          >
+          <button class="clear-search-btn" id="clearSearchBtn" title="Clear search">✕</button>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Filter:</span>
+          <div class="filter-pills" id="filterPills">
+            <button class="filter-pill active" data-filter="all">All Items</button>
+            <button class="filter-pill" data-filter="lost">Lost Items</button>
+            <button class="filter-pill" data-filter="found">Found Items</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Items Section -->
+    <section class="items-section">
+      <div class="items-container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Recently Reported Items</h2>
+            <p class="section-subtitle">Browse recently lost and found items or search to verify potential matches.</p>
+          </div>
+          <div class="item-count-badge" id="itemCount">Showing 6 items</div>
+        </div>
+
+        <!-- Dynamic Grid populated by JavaScript -->
+        <div class="items-grid" id="itemsGrid">
+          <!-- Item cards rendered dynamically -->
+        </div>
+
+        <!-- No Results Fallback -->
+        <div class="no-results" id="noResults" style="display: none;">
+          <div class="no-results-icon">📦</div>
+          <h3>No matching items found</h3>
+          <p>Try searching with different keywords or clear your active filters.</p>
+          <button class="btn btn-secondary" id="resetFiltersBtn">Reset Filters</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Action Modal (Preview) -->
+  <div class="modal-overlay" id="actionModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn">&times;</button>
+      <div class="modal-icon" id="modalIcon">ℹ️</div>
+      <h3 class="modal-title" id="modalTitle">Action Required</h3>
+      <p class="modal-body" id="modalBody">This feature will be connected in the upcoming steps.</p>
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="modalOkBtn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">Campus<span class="highlight">Find</span></div>
+        <p class="footer-tagline">AI-Based Lost Object Matching System - College Project.</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 CampusFind System. Built with HTML, CSS, JavaScript, Flask & Supabase.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript -->
+  <script src="js/config.js" defer></script>
+  <script src="js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusFind - Staff Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🔍</span>
+        <span class="logo-text">Campus<span class="highlight">Find</span></span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#items-section" class="nav-link">Browse Items</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="items-container" style="padding-top:40px;padding-bottom:50px;">
+
+    <h1>Staff Portal</h1>
+    <p>Review and manage ownership claims.</p>
+
+    <section style="margin-top:25px;padding:20px;border:1px solid #ddd;border-radius:10px;">
+      <h2>Staff Authentication</h2>
+
+      <label for="adminKey">Admin API Key</label>
+      <input
+        type="password"
+        id="adminKey"
+        placeholder="Enter your admin key"
+        autocomplete="off"
+        style="width:100%;padding:12px;margin:10px 0;"
+      >
+
+      <button id="loadClaimsBtn" class="btn btn-primary">
+        Load Claims
+      </button>
+
+      <p id="adminMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <section style="margin-top:30px;">
+      <h2>Ownership Claims</h2>
+
+      <label for="statusFilter">Filter claims:</label>
+      <select id="statusFilter" style="padding:10px;margin:10px;">
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+        <option value="all">All Claims</option>
+      </select>
+
+      <div id="claimsList" style="margin-top:20px;">
+        <p>Enter your admin key and load claims.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/admin.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Lost Item | CampusFind AI</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🔍</span>
+        <span class="logo-text">Campus<span class="highlight">Find</span></span>
+        <span class="badge ai-tag">AI Powered</span>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="report-lost.html" class="nav-link active">Report Lost</a>
+        <a href="report-found.html" class="nav-link">Report Found</a>
+        <a href="index.html#items-section" class="nav-link">Browse Items</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="form-page-main">
+    <div class="form-container">
+      
+      <!-- Back to Home Link -->
+      <div class="back-link-wrapper">
+        <a href="index.html" class="back-link">
+          <span class="back-arrow">&larr;</span> Back to Homepage
+        </a>
+      </div>
+
+      <!-- Main Form Card -->
+      <section class="form-card" id="formCard">
+        <div class="form-header">
+          <div class="form-header-badge">
+            <span class="badge-dot"></span> Lost Item Report
+          </div>
+          <h1 class="form-title">Report a Lost Object</h1>
+          <p class="form-subtitle">
+            Provide the details of your missing item. Our AI similarity algorithm will compare your description, category, and photo against found items across the campus.
+          </p>
+        </div>
+
+        <form id="lostItemForm" novalidate>
+          
+          <!-- Field 1: Item Name -->
+          <div class="form-group">
+            <label for="itemName" class="form-label">
+              Item Name <span class="required-star">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="itemName" 
+              class="form-control" 
+              placeholder="e.g. Navy Blue Hydro Flask Water Bottle, Dell USB-C Charger"
+              autocomplete="off"
+            >
+            <div class="error-msg" id="itemNameError"></div>
+          </div>
+
+          <!-- Two-column Row: Category & Colour -->
+          <div class="form-row">
+            <!-- Field 2: Category -->
+            <div class="form-group">
+              <label for="itemCategory" class="form-label">
+                Category <span class="required-star">*</span>
+              </label>
+              <select id="itemCategory" class="form-control">
+                <option value="">-- Select a Category --</option>
+                <option value="Electronics">Electronics (Laptops, Phones, Chargers, Audio)</option>
+                <option value="IDs & Cards">IDs, Cards, Wallets & Documents</option>
+                <option value="Bags & Luggage">Bags, Backpacks & Purses</option>
+                <option value="Keys">Keys & Lanyards</option>
+                <option value="Books & Stationery">Books, Notebooks & Stationery</option>
+                <option value="Clothing & Accessories">Clothing, Jackets, Caps & Shoes</option>
+                <option value="Personal Belongings">Water Bottles, Glasses & Personal Items</option>
+                <option value="Other">Other Miscellaneous Item</option>
+              </select>
+              <div class="error-msg" id="itemCategoryError"></div>
+            </div>
+
+            <!-- Field 3: Colour -->
+            <div class="form-group">
+              <label for="itemColor" class="form-label">
+                Colour / Appearance <span class="optional-text">(Optional)</span>
+              </label>
+              <input 
+                type="text" 
+                id="itemColor" 
+                class="form-control" 
+                placeholder="e.g. Matte Black, Navy Blue, Silver"
+                autocomplete="off"
+              >
+              <div class="error-msg" id="itemColorError"></div>
+            </div>
+          </div>
+
+          <!-- Two-column Row: Lost Location & Date Lost -->
+          <div class="form-row">
+            <!-- Field 4: Lost Location -->
+            <div class="form-group">
+              <label for="lostLocation" class="form-label">
+                Lost Location <span class="required-star">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="lostLocation" 
+                class="form-control" 
+                placeholder="e.g. Central Library 2nd Floor, Science Lab 3, Cafeteria"
+                autocomplete="off"
+              >
+              <div class="error-msg" id="lostLocationError"></div>
+            </div>
+
+            <!-- Field 5: Date Lost -->
+            <div class="form-group">
+              <label for="dateLost" class="form-label">
+                Date Lost <span class="required-star">*</span>
+              </label>
+              <input 
+                type="date" 
+                id="dateLost" 
+                class="form-control"
+              >
+              <div class="error-msg" id="dateLostError"></div>
+            </div>
+          </div>
+
+          <!-- Field 6: Item Description -->
+          <div class="form-group">
+            <label for="itemDescription" class="form-label">
+              Detailed Description <span class="required-star">*</span>
+            </label>
+            <textarea 
+              id="itemDescription" 
+              class="form-control" 
+              rows="4" 
+              placeholder="Describe unique characteristics, marks, scratches, stickers, brand name, model numbers, contents inside, or distinguishing features to assist the AI matching engine..."
+            ></textarea>
+            <div class="form-hint">
+              💡 Tip: Specific details (like brand logos, stickers, or scratches) increase AI match accuracy.
+            </div>
+            <div class="error-msg" id="itemDescriptionError"></div>
+          </div>
+
+          <!-- Field 7: Upload Photograph -->
+          <div class="form-group">
+            <label class="form-label">
+              Item Photograph <span class="optional-text">(Optional)</span>
+            </label>
+            
+            <div class="upload-dropzone" id="uploadDropzone">
+              <input 
+                type="file" 
+                id="itemPhoto" 
+                class="file-input-hidden" 
+                accept="image/png, image/jpeg, image/jpg, image/webp"
+              >
+              <div class="dropzone-content" id="dropzonePrompt">
+                <span class="upload-icon">📷</span>
+                <p class="upload-title">Click to upload or drag & drop photograph</p>
+                <p class="upload-subtitle">Supports PNG, JPG, JPEG, WEBP (Max 5MB)</p>
+              </div>
+
+              <!-- Live Photo Preview Box -->
+              <div class="preview-box" id="previewBox" style="display: none;">
+                <div class="preview-img-wrapper">
+                  <img id="previewImg" src="" alt="Selected photo preview">
+                </div>
+                <div class="preview-details">
+                  <span class="preview-filename" id="previewFileName">filename.jpg</span>
+                  <span class="preview-filesize" id="previewFileSize">1.2 MB</span>
+                  <button type="button" class="btn-remove-photo" id="removePhotoBtn">
+                    ✕ Remove Photo
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="error-msg" id="itemPhotoError"></div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-actions">
+            <div class="error-msg" id="submitGeneralError" style="margin-bottom: 1rem; text-align: center; font-size: 0.95rem;"></div>
+            <button type="submit" class="btn btn-lost btn-submit" id="submitBtn">
+              <span class="btn-icon">📢</span> Submit Lost Report
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Success State (Hidden by default) -->
+      <section class="success-card" id="successCard" style="display: none;">
+        <div class="success-icon-badge">🎉</div>
+        <h2 class="success-title" id="successTitle">Lost Report Submitted Successfully!</h2>
+        <p class="success-subtitle" id="successSubtitle">
+          Your report has been saved directly to the database. Our AI matching system will compare your item with found items across campus.
+        </p>
+
+        <!-- Summary of submitted data -->
+        <div class="summary-card">
+          <h3 class="summary-heading">Report Summary</h3>
+          <div class="summary-grid" id="summaryGrid">
+            <!-- Dynamically populated by report-lost.js -->
+          </div>
+        </div>
+
+        <div class="success-actions">
+          <button type="button" class="btn btn-secondary" id="reportAnotherBtn">
+            + Report Another Item
+          </button>
+          <a href="index.html" class="btn btn-primary">
+            Return to Homepage
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">Campus<span class="highlight">Find</span></div>
+        <p class="footer-tagline">AI-Based Lost Object Matching System - College Project.</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 CampusFind System. Built with HTML, CSS, JavaScript, Flask & Supabase.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript for Report Lost -->
+  <script src="js/config.js" defer></script>
+  <script src="js/report-lost.js" defer></script>
+</body>
+</html>
