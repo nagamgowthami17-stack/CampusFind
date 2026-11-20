@@ -13,7 +13,7 @@
 
   // Production Render Backend URL:
   // Update this placeholder with your live Render backend URL after deploying (e.g. 'https://campusfind-api.onrender.com')
-  const PRODUCTION_API_URL = 'https://campusfind-api.onrender.com';
+  const PRODUCTION_API_URL = 'https://campusfind-s2yt.onrender.com';
 
   const API_BASE_URL = isLocalhost ? 'http://127.0.0.1:5000' : PRODUCTION_API_URL;
 
